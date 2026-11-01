@@ -1,0 +1,19 @@
+{
+  "name": "je-serai-millionnaire",
+  "version": "1.0.0",
+  "description": "Une affirmation, un bouton, 1 €. Paiement par Apple Pay, Google Pay ou carte bancaire via Stripe.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "stripe": "^17.5.0"
+  }
+}

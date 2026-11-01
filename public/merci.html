@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Merci</title>
+  <meta name="theme-color" content="#0b0b0f" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page">
+    <h1 class="statement">C'est <span class="gold">signé.</span></h1>
+    <p id="message" class="lead">Vérification du paiement…</p>
+    <a class="link" href="/">Revenir à l'affirmation</a>
+  </main>
+
+  <script>
+    (async () => {
+      const msg = document.getElementById('message');
+      const id = new URLSearchParams(location.search).get('session_id');
+      try {
+        const res = await fetch('/api/verify?session_id=' + encodeURIComponent(id || ''));
+        const data = await res.json();
+        if (data.paid) {
+          msg.textContent = data.count > 1
+            ? `Merci ! Tu es la ${data.count.toLocaleString('fr-FR')}e personne à en être certaine.`
+            : 'Merci ! Tu es la première personne à en être certaine.';
+        } else {
+          msg.textContent = "Le paiement n'a pas été confirmé. Si ta banque t'a débité, contacte-nous.";
+        }
+      } catch {
+        msg.textContent = 'Merci ! Ton paiement a bien été transmis.';
+      }
+    })();
+  </script>
+</body>
+</html>
