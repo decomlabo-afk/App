@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Merci</title>
+  <title>Thank You</title>
   <meta name="theme-color" content="#0b0b0f" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -11,27 +11,29 @@
 </head>
 <body>
   <main class="page">
-    <h1 class="statement">C'est <span class="gold">signé.</span></h1>
-    <p id="message" class="lead">Vérification du paiement…</p>
-    <a class="link" href="/">Revenir à l'affirmation</a>
+    <h1 class="statement">It's <span class="gold">signed.</span></h1>
+    <p id="message" class="lead">Checking your payment…</p>
+    <a class="link" href="/">Back to the statement</a>
   </main>
 
   <script>
     (async () => {
       const msg = document.getElementById('message');
       const id = new URLSearchParams(location.search).get('session_id');
+      const ordinal = (n) => {
+        const s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+        return n.toLocaleString('en-US') + (s[(v - 20) % 10] || s[v] || s[0]);
+      };
       try {
         const res = await fetch('/api/verify?session_id=' + encodeURIComponent(id || ''));
         const data = await res.json();
         if (data.paid) {
-          msg.textContent = data.count > 1
-            ? `Merci ! Tu es la ${data.count.toLocaleString('fr-FR')}e personne à en être certaine.`
-            : 'Merci ! Tu es la première personne à en être certaine.';
+          msg.textContent = `Thank you! You're the ${ordinal(data.count)} person to be certain.`;
         } else {
-          msg.textContent = "Le paiement n'a pas été confirmé. Si ta banque t'a débité, contacte-nous.";
+          msg.textContent = "Your payment wasn't confirmed. If your bank charged you, please contact us.";
         }
       } catch {
-        msg.textContent = 'Merci ! Ton paiement a bien été transmis.';
+        msg.textContent = 'Thank you! Your payment has been sent.';
       }
     })();
   </script>

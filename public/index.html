@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Je serai millionnaire</title>
-  <meta name="description" content="Oui, je serai millionnaire. C'est une certitude : 1 €." />
+  <title>I Will Be a Millionaire</title>
+  <meta name="description" content="Yes, I will be a millionaire. It's a certainty: €1." />
   <meta name="theme-color" content="#0b0b0f" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Millionnaire" />
-  <meta property="og:title" content="Oui, je serai millionnaire." />
-  <meta property="og:description" content="C'est une certitude. 1 €." />
+  <meta name="apple-mobile-web-app-title" content="Millionaire" />
+  <meta property="og:title" content="Yes, I will be a millionaire." />
+  <meta property="og:description" content="It's a certainty. €1." />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/icon.svg" />
@@ -18,24 +18,24 @@
 </head>
 <body>
   <main class="page">
-    <h1 class="statement">Oui, je serai<br /><span class="gold">millionnaire.</span></h1>
+    <h1 class="statement">Yes, I will be<br />a <span class="gold">millionaire.</span></h1>
 
     <button id="pay" class="cta" type="button">
-      <span class="cta-label">C'est une certitude</span>
-      <span class="cta-price">1&nbsp;€</span>
+      <span class="cta-label">It's a certainty</span>
+      <span class="cta-price">€1</span>
     </button>
 
-    <p class="methods" aria-label="Moyens de paiement acceptés">
+    <p class="methods" aria-label="Accepted payment methods">
       <span>Apple&nbsp;Pay</span><span aria-hidden="true">·</span>
       <span>Google&nbsp;Pay</span><span aria-hidden="true">·</span>
-      <span>Carte bancaire</span>
+      <span>Card</span>
     </p>
 
     <p id="counter" class="counter" hidden></p>
     <p id="error" class="error" role="alert" hidden></p>
   </main>
 
-  <footer class="footer">Paiement sécurisé par Stripe</footer>
+  <footer class="footer">Secure payment by Stripe</footer>
 
   <script src="/app.js"></script>
 </body>

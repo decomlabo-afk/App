@@ -1,6 +1,6 @@
-# Oui, je serai millionnaire.
+# Yes, I will be a millionaire.
 
-Une affirmation. Un bouton : **« C'est une certitude — 1 € »**.
+Une affirmation. Un bouton : **« It's a certainty — €1 »** (textes de l'app en anglais).
 Paiement par **Apple Pay**, **Google Pay** ou **carte bancaire** (via Stripe Checkout).
 
 L'app est une **web app mobile (PWA)** : elle s'adapte au téléphone comme à l'ordinateur et
@@ -12,7 +12,7 @@ s'installe sur l'écran d'accueil (iPhone : Partager → « Sur l'écran d'accue
 |---|---|
 | `server.js` | Serveur Express : crée le paiement Stripe, reçoit le webhook, tient le compteur |
 | `public/index.html` | La page principale (affirmation + bouton) |
-| `public/merci.html` | La page affichée après le paiement |
+| `public/thanks.html` | La page affichée après le paiement |
 | `public/app.js`, `public/styles.css` | Comportement et design |
 | `public/manifest.webmanifest`, `public/sw.js`, `public/icon.svg` | Installation en app (PWA) |
 

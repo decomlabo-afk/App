@@ -1,6 +1,6 @@
 // Service worker minimal : permet l'installation sur l'écran d'accueil.
 // Le réseau reste prioritaire, le cache sert seulement hors connexion.
-const CACHE = 'millionnaire-v1';
+const CACHE = 'millionnaire-v2';
 const ASSETS = ['/', '/styles.css', '/app.js', '/icon.svg', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {

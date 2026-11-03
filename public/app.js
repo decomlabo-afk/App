@@ -14,7 +14,7 @@ payBtn.addEventListener('click', async () => {
   try {
     const res = await fetch('/api/checkout', { method: 'POST' });
     const data = await res.json();
-    if (!res.ok || !data.url) throw new Error(data.error || 'Erreur inconnue');
+    if (!res.ok || !data.url) throw new Error(data.error || 'Something went wrong');
     // Page de paiement Stripe : Apple Pay / Google Pay apparaissent automatiquement
     // sur les appareils compatibles, sinon saisie de la carte bancaire.
     window.location.href = data.url;
@@ -35,7 +35,7 @@ window.addEventListener('pageshow', () => {
   try {
     const { count } = await (await fetch('/api/count')).json();
     if (count > 0) {
-      counterEl.textContent = `${count.toLocaleString('fr-FR')} ${count > 1 ? 'personnes en sont' : 'personne en est'} déjà certaine${count > 1 ? 's' : ''}.`;
+      counterEl.textContent = `${count.toLocaleString('en-US')} ${count > 1 ? 'people are' : 'person is'} already certain.`;
       counterEl.hidden = false;
     }
   } catch { /* compteur facultatif */ }

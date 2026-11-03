@@ -62,7 +62,7 @@ app.use(express.json());
 // Crée une page de paiement Stripe Checkout (Apple Pay, Google Pay, CB).
 app.post('/api/checkout', async (_req, res) => {
   if (!stripe) {
-    return res.status(503).json({ error: "Le paiement n'est pas encore configuré (STRIPE_SECRET_KEY manquante)." });
+    return res.status(503).json({ error: 'Payments are not set up yet (STRIPE_SECRET_KEY is missing).' });
   }
   try {
     const session = await stripe.checkout.sessions.create({
@@ -74,20 +74,20 @@ app.post('/api/checkout', async (_req, res) => {
             currency: 'eur',
             unit_amount: PRICE_CENTS,
             product_data: {
-              name: "C'est une certitude",
-              description: 'Oui, je serai millionnaire.',
+              name: "It's a certainty",
+              description: 'Yes, I will be a millionaire.',
             },
           },
         },
       ],
-      locale: 'fr',
-      success_url: `${PUBLIC_URL}/merci.html?session_id={CHECKOUT_SESSION_ID}`,
+      locale: 'auto',
+      success_url: `${PUBLIC_URL}/thanks.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${PUBLIC_URL}/`,
     });
     res.json({ url: session.url });
   } catch (err) {
     console.error('Erreur Stripe :', err.message);
-    res.status(500).json({ error: 'Impossible de créer le paiement. Réessaie dans un instant.' });
+    res.status(500).json({ error: 'Could not start the payment. Please try again in a moment.' });
   }
 });
 
